@@ -1,0 +1,88 @@
+.left-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 400px;
+    padding: 16px 24px;
+    border-right: 1px solid rgba(0,0,0,.12);
+    overflow: auto;
+}
+.right-box {
+    position: absolute;
+    top: 0;
+    left: 400px;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+}
+.article {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+.request-list {
+    .request-item {
+        padding: 24px 16px;
+        border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+    .title {
+        margin-bottom: 16px;
+        font-size: 20px;
+    }
+    .sub-title {
+        margin: 16px 0;
+        font-size: 16px;
+    }
+    .url {
+        padding: 16px;
+        border: 1px solid #eee;
+    }
+    .method {
+        color: #fff;
+        background-color: #49cc90;
+        margin-right: 16px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .method-GET {
+        background-color: #61affe;
+    }
+    .method-POST {
+        background-color: #49cc90;
+    }
+    .method-PUT {
+        background-color: #fca130;
+    }
+    .method-DELETE {
+        background-color: #f93e3e;
+    }
+}
+
+pre {
+    padding: 16px;
+    border-radius: 3px;
+    background: #FAFAFA;
+    border: thin solid #e6e6e6;
+}
+table {
+    width: 100%;
+    th,
+    td {
+        padding: 8px 16px;
+        border: 1px solid #eee;
+    }
+}
+.tool-box {
+    max-width: 800px;
+    width: 100%;
+    .body {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 16px;
+        overflow: auto;
+    }
+}

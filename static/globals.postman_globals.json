@@ -1,0 +1,16 @@
+{
+  "id": "dafb74fd-ec62-e62e-189b-2ef522fc002f",
+  "name": "Postman Globals",
+  "values": [
+    {
+      "key": "as",
+      "value": "as",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "globals",
+  "_postman_exported_at": "2018-04-24T09:36:24.797Z",
+  "_postman_exported_using": "Postman/5.5.2"
+}

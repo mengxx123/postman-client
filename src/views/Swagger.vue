@@ -7,20 +7,16 @@
                     :halfcheck='true'/>
         </div>
         <div class="right-box">
-            <ui-article id="info" class="article" v-if="info">
+            <ui-article class="article" v-if="info">
                 <h1>{{ info.name }}</h1>
-                <div v-html="html(info.description)"></div>
             </ui-article>
             <ul class="request-list">
                 <li :id="request.id" class="request-item" v-for="request, index in requests">
                     <h2 class="title">
-                        <span class="method"
-                              @click="showTool(request)"
-                              :class="['method-' + request.request.method]"
-                              :title="'' + index">{{ request.request.method }}</span>
+                        <span class="method" :class="['method-' + request.request.method]" :title="'' + index">{{ request.request.method }}</span>
                         {{ request.name }}
                     </h2>
-                    <div class="url">{{ getUrl(request) }}</div>
+                    <div class="url">{{ getTemplateStr(request.request.url.raw || request.request.url) }}</div>
                     <div v-if="request.request.body.raw">
                         <h2 class="sub-title">BODY</h2>
                         <pre v-if="request.request.body.raw">{{ request.request.body.raw }}</pre>
@@ -36,23 +32,21 @@
                         </table>
                     </div>
                 </li>
-
             </ul>
         </div>
-        <ui-drawer class="tool-box" right :open="toolVisible" @close="toggle()">
-            <ui-appbar title="工具">
-                <ui-icon-button icon="close" @click="toggle" slot="left" />
-            </ui-appbar>
-            <div class="body" v-if="curRequest">
-                <ui-raised-button primary label="HTTP 请求" @click="doRequest" />
-            </div>
-        </ui-drawer>
+        <!--<div v-if="data">-->
+            <!--{{ data.info }}-->
+            <!--<br>-->
+            <!--<ul>-->
+                <!--<li v-for="it in data.item">-->
+                    <!--21212-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
     </my-page>
 </template>
 
 <script>
-    const marked = window.marked
-    
     export default {
         data () {
             return {
@@ -74,35 +68,19 @@
                 data: null,
                 info: null,
                 requests: [],
-                curRequest: null,
-                toolVisible: false
+                curRequest: null
             }
         },
         mounted() {
             this.init()
         },
         methods: {
-            getUrl(request) {
-                return this.getTemplateStr(request.request.url.raw || request.request.url)
-            },
-            showTool(request) {
-                this.toolVisible = true
-                this.curRequest = request
-            },
-            toggle () {
-                this.toolVisible = !this.toolVisible
-            },
-            html(markdown) {
-                return marked(markdown)
-            },
             getTemplateStr(request) {
                 return request.replace('{{baseurl}}', 'http://192.168.3.60:9998/index.php/home')
             },
             click(node) {
 //                console.log(node)
-                if (node.info) {
-                    location.href = '#info'
-                } else if (node.isLeave) {
+                if (node.isLeave) {
                     location.href = '#' + node.toId
                 } else {
                     node.expanded = !node.expanded
@@ -153,12 +131,6 @@
             },
             getTreeFromData(data) {
                 let arr = []
-                arr.push({
-                    title: '介绍',
-                    info: true,
-                    isLeave: true,
-                    children: []
-                })
                 for (let it of data.item) {
                     arr.push(this.getItem(it))
                 }
@@ -170,23 +142,10 @@
                 }
                 return this._id++
             },
-            doRequest() {
-                console.log('请求')
-                console.log(this.curRequest.request.method)
-                this.$http({
-                    method: this.curRequest.request.method,
-                    url: this.getUrl(this.curRequest),
-                    data: {
-                        firstName: 'Fred',
-                        lastName: 'Flintstone'
-                    }
-                }).then(
-                    response => {
-                        console.log(response)
-                    },
-                    response => {
-                        console.log(response)
-                    })
+            tpl (node, ctx) {
+//                let titleClass = node.selected ? 'node-title node-selected' : 'node-title'
+//                if (node.searched) titleClass += ' node-searched'
+                return `121211`
             }
         }
     }

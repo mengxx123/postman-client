@@ -1,0 +1,3616 @@
+{
+	"variables": [],
+	"info": {
+		"name": "erp",
+		"_postman_id": "6f6f24e5-7293-db52-11e0-f4a4701e8da0",
+		"description": "## 简介\n\n测试一下What does your API do?\n\n## Overview\nThings that the developers should know about\n\n## Authentication\nWhat is the preferred way of using the API?\n\n## Error Codes\nWhat errors and status codes can a user expect?\n\n## Rate limit\nIs there a limit to the number of requests an user can send?\n\n## 其他\n\n啦啦啦",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "人事",
+			"description": "",
+			"item": [
+				{
+					"name": "分支机构",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有分支机构",
+							"request": {
+								"url": "{{baseurl}}/branch/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": "获取所有分支机构，不支持分页查询"
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个分支机构",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/branch/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"branch",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加分支机构",
+							"request": {
+								"url": "{{baseurl}}/branch/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "Content-Type 为 application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"address\": \"测试地址\",\n\t\"code\": \"123\",\n\t\"name\": \"测试名称\",\n\t\"note\": \"测试备注\",\n\t\"manager_id\": 1\n}\n"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改分支机构",
+							"request": {
+								"url": "{{baseurl}}/branch/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": 1,\n\t\"address\": \"测试地址修改\",\n\t\"code\": \"123\",\n\t\"name\": \"测试名称修改\",\n\t\"note\": \"测试备注修改\",\n\t\"manager_id\": 1\n}\n"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除分支机构",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/branch/remove?id=3",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"branch",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "3",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "部门",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有部门",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"let json = JSON.parse(responseBody)",
+											"tests[\"Status code is 200\"] = json['code'] === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"url": "{{baseurl}}/department/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个部门",
+							"request": {
+								"url": "{{baseurl}}/department/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加部门",
+							"request": {
+								"url": "{{baseurl}}/department/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"测试名称\",\n\t\"code\": \"123\",\n\t\"note\": \"测试备注\",\n\t\"manager_id\": 1\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改部门",
+							"request": {
+								"url": "{{baseurl}}/department/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": 1,\n\t\"name\": \"测试名称修改\",\n\t\"code\": \"123\",\n\t\"note\": \"测试备注修改\",\n\t\"manager_id\": 1\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除部门",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/department/remove?id=5",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"department",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "公司",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有公司",
+							"request": {
+								"url": "{{baseurl}}/company/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个公司",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/company/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"company",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "仓库",
+			"description": "",
+			"item": [
+				{
+					"name": "仓库",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有仓库",
+							"request": {
+								"url": "{{baseurl}}/store/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个仓库",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/store/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"store",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加仓库",
+							"request": {
+								"url": "{{baseurl}}/store/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"测试\",\r\n    \"manager_id\": 1,\r\n    \"address\": \"测试\",\r\n    \"note\": \"测试\",\r\n    \"code\": \"123\",\r\n    \"branch_id\": 1\r\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改仓库",
+							"request": {
+								"url": "{{baseurl}}/store/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"id\": 1,\r\n    \"name\": \"测试\",\r\n    \"manager_id\": 1,\r\n    \"address\": \"测试\",\r\n    \"note\": \"测试\",\r\n    \"code\": \"123\",\r\n    \"branch_id\": 1\r\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除仓库",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/store/remove?id=7",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"store",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "7",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "物流",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有物流",
+							"request": {
+								"url": "{{baseurl}}/logistics/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个物流",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/logistics/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"logistics",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加物流",
+							"request": {
+								"url": "{{baseurl}}/logistics/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"测试\",\r\n    \"company\": \"测试\",\r\n    \"contacts_name\": \"测试\",\r\n    \"contacts_phone\": \"测试\",\r\n    \"note\": \"测试\"\r\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改物流",
+							"request": {
+								"url": "{{baseurl}}/logistics/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"测试5\",\r\n    \"company\": \"测试\",\r\n    \"contacts_name\": \"测试\",\r\n    \"contacts_phone\": \"测试\",\r\n    \"note\": \"测试\"\r\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除物流",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/logistics/remove?id=5",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"logistics",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "出入库类型",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有出入库类型",
+							"request": {
+								"url": "{{baseurl}}/storage_io_type/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取出入库类型详情",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/storage_io_type/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"storage_io_type",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加出入库类型",
+							"request": {
+								"url": "{{baseurl}}/storage_io_type/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"退货出库\",\r\n    \"type\": \"2\"\r\n}\r\n"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改出入库类型",
+							"request": {
+								"url": "{{baseurl}}/storage_io_type/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"1\",\r\n    \"name\": \"退货出库\",\r\n    \"type\": \"2\"\r\n}\r\n"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除出入库类型",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/storage_io_type/remove?id=5",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"storage_io_type",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "入库",
+					"description": "",
+					"item": [
+						{
+							"name": "获取入库单",
+							"request": {
+								"url": "{{baseurl}}/storage_in/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个入库单",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/storage_in/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"storage_in",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "出库",
+					"description": "",
+					"item": [
+						{
+							"name": "获取出库单",
+							"request": {
+								"url": "{{baseurl}}/storage_out/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取出库单详情",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/storage_out/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"storage_out",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "调拨",
+					"description": "",
+					"item": [
+						{
+							"name": "获取调拨单",
+							"request": {
+								"url": "{{baseurl}}/storage_move/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取调拨单详情",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/storage_move/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"storage_move",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "调价",
+					"description": "",
+					"item": [
+						{
+							"name": "获取调价单",
+							"request": {
+								"url": "{{baseurl}}/storage_modify_price/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取调价单详情",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/storage_modify_price/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"storage_modify_price",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "库存查询",
+					"request": {
+						"url": "{{baseurl}}/stock/all",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "产品",
+			"description": "商城模块，包括产品等",
+			"item": [
+				{
+					"name": "产品",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有产品",
+							"request": {
+								"url": "{{baseurl}}/product/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个产品",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/product/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"product",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "产品搜索",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/product/all?keyword=沙发",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"product",
+										"all"
+									],
+									"query": [
+										{
+											"key": "keyword",
+											"value": "沙发",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "套餐",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有套餐",
+							"request": {
+								"url": "{{baseurl}}/package/all",
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "222",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个套餐",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/package/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"package",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "产品分类",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有产品分类",
+							"request": {
+								"url": "{{baseurl}}/product_category/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个产品分类",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/product_category/detail?id=3",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"product_category",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "3",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "SKU",
+					"description": "",
+					"item": [
+						{
+							"name": "{{baseurl}}/sku/all?product_id=1",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/sku/all?product_id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"sku",
+										"all"
+									],
+									"query": [
+										{
+											"key": "product_id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "产品-属性",
+					"description": "",
+					"item": [
+						{
+							"name": "获取产品的所有属性",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/product/attribute?product_id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"product",
+										"attribute"
+									],
+									"query": [
+										{
+											"key": "product_id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": "获取商品的所有属性和属性值"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "分类属性",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有分类属性",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/attribute/all?category_id=3",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"attribute",
+										"all"
+									],
+									"query": [
+										{
+											"key": "category_id",
+											"value": "3",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个属性",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/attribute/detail?id=5",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"attribute",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加属性",
+							"request": {
+								"url": "{{baseurl}}/attribute/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"测试属性\",\n    \"product_category_id\": 3\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改产品属性",
+							"request": {
+								"url": "{{baseurl}}/attribute/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": 5,\n    \"name\": \"测试属性修改\",\n    \"product_category_id\": 3\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除产品属性",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/attribute/remove?id=5",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"attribute",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加属性值",
+							"request": {
+								"url": "{{baseurl}}/attribute_value/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"attribute_id\": 5,\n\t\"value\": \"测试值\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改属性值",
+							"request": {
+								"url": "{{baseurl}}/attribute_value/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": 20,\n\t\"attribute_id\": 5,\n\t\"value\": \"测试值修改\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除属性值",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/attribute_value/remove?id=19",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"attribute_value",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "19",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "产品单位",
+					"description": "",
+					"item": [
+						{
+							"name": "获取单位",
+							"request": {
+								"url": "{{baseurl}}/unit/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "客户关系",
+			"description": "",
+			"item": [
+				{
+					"name": "客户",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有客户",
+							"request": {
+								"url": "{{baseurl}}/customer/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个客户",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/customer/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "客户类型",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有客户类型",
+							"request": {
+								"url": "{{baseurl}}/customer_type/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个客户类型",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/customer_type/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer_type",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "回访记录",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有回访记录",
+							"request": {
+								"url": "{{baseurl}}/customer_visit/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取某个客户的所有回访记录",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/customer_visit/all?customer_id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer_visit",
+										"all"
+									],
+									"query": [
+										{
+											"key": "customer_id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个回访记录",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/customer_visit/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer_visit",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改回访记录",
+							"request": {
+								"url": "{{baseurl}}/customer_visit/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"1\",\n    \"visit_type_id\": \"1\",\n    \"time\": \"2018-04-20 11:12:59\",\n    \"user_id\": \"1\",\n    \"user_name\": \"陈建杭\",\n    \"branch_id\": \"1\",\n    \"customer_id\": \"1\",\n    \"content\": \"这是回访内容修改\",\n    \"note\": \"\",\n    \"result\": \"这是结果\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加回访记录",
+							"request": {
+								"url": "{{baseurl}}/customer_visit/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"visit_type_id\": \"1\",\n    \"time\": \"2018-04-20 11:12:59\",\n    \"user_id\": \"1\",\n    \"user_name\": \"陈建杭\",\n    \"branch_id\": \"1\",\n    \"customer_id\": \"1\",\n    \"content\": \"这是回访内容修改\",\n    \"note\": \"\",\n    \"result\": \"这是结果\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除回访记录",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/customer_visit/remove?id=4",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer_visit",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "获取所有回访类型",
+					"request": {
+						"url": "{{baseurl}}/visit_type/all",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "办公",
+			"description": "",
+			"item": [
+				{
+					"name": "公告",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有公告",
+							"request": {
+								"url": "{{baseurl}}/notice/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个公告",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/notice/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"notice",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加公告",
+							"request": {
+								"url": "{{baseurl}}/notice/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"测试标题\",\n\t\"content\": \"测试内容\",\n\t\"user_id\": 1,\n\t\"branch_id\": 1\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改公告",
+							"request": {
+								"url": "{{baseurl}}/notice/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": 1,\n\t\"title\": \"测试标题修改\",\n\t\"content\": \"测试内容修改\",\n\t\"user_id\": 1,\n\t\"branch_id\": 1\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除公告",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/notice/remove?id=5",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"notice",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "日志",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有日志",
+							"request": {
+								"url": "{{baseurl}}/work_log/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取某个用户的所有日志",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/work_log/all?user_id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"work_log",
+										"all"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个日志",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/work_log/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"work_log",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加日志",
+							"request": {
+								"url": "{{baseurl}}/work_log/add",
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "测试内容",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "time",
+											"value": "2018-04-19 11:13:15",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除日志",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/work_log/remove?id=3",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"work_log",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "3",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "申请",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有申请",
+							"request": {
+								"url": "{{baseurl}}/apply/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取某个用户的所有申请",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/apply/all?user_id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"apply",
+										"all"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个申请",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/apply/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"apply",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改申请",
+							"request": {
+								"url": "{{baseurl}}/apply/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"id\": 1,\r\n    \"apply_user_id\": 1,\r\n    \"type\": 1,\r\n    \"content\": \"测试\",\r\n    \"check_state\": 1,\r\n    \"check_user_id\": 1,\r\n    \"check_time\": \"2018-4-20 16:37:40\"\r\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加申请",
+							"request": {
+								"url": "{{baseurl}}/apply/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"apply_user_id\": 1,\r\n    \"type\": 1,\r\n    \"content\": \"测试\",\r\n    \"check_state\": 1,\r\n    \"check_user_id\": 1,\r\n    \"check_time\": \"2018-4-20 16:37:40\"\r\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取申请类型",
+							"request": {
+								"url": "{{baseurl}}/apply_type/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "财务",
+			"description": "",
+			"item": [
+				{
+					"name": "工资",
+					"description": "",
+					"item": [
+						{
+							"name": "获取工资单",
+							"request": {
+								"url": "{{baseurl}}/wage/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个工资单",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/wage/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"wage",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加工资单",
+							"request": {
+								"url": "{{baseurl}}/wage/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"测试名称\",\r\n  \"code\": \"002\",\r\n  \"note\": \"测试备注\",\r\n  \"manager_id\": 1,\r\n  \"items\": [\r\n    {\r\n      \"user_id\": 1,\r\n      \"basic_wage\": 100,\r\n      \"commission\": 20.5\r\n    },\r\n    {\r\n      \"user_id\": 2,\r\n      \"basic_wage\": 100,\r\n      \"commission\": 20.5\r\n    }\r\n  ]\r\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除工资单",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/wage/remove?id=2",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"wage",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "科目",
+					"description": "",
+					"item": [
+						{
+							"name": "获取科目",
+							"request": {
+								"url": "{{baseurl}}/account/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个科目",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/account/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"account",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加科目",
+							"request": {
+								"url": "{{baseurl}}/account/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"code\": \"001\",\n    \"name\": \"默认现金账户\",\n    \"note\": \"测试备注\",\n    \"opening_balance\": \"0.00\",\n    \"ending_balance\": \"0.00\",\n    \"type\": \"1\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改科目",
+							"request": {
+								"url": "{{baseurl}}/account/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"1\",\n    \"code\": \"001\",\n    \"name\": \"默认现金账户\",\n    \"note\": \"测试备注\",\n    \"opening_balance\": \"0.00\",\n    \"ending_balance\": \"0.00\",\n    \"type\": \"1\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "凭证",
+					"description": "",
+					"item": [
+						{
+							"name": "获取凭证",
+							"request": {
+								"url": "{{baseurl}}/voucher/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取凭证详情",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/voucher/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"voucher",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "现金银行",
+					"description": "",
+					"item": [
+						{
+							"name": "获取现金银行",
+							"request": {
+								"url": "{{baseurl}}/bank/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取现金银行详情",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/bank/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"bank",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加现金银行",
+							"request": {
+								"url": "{{baseurl}}/bank/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"中国银行\",\n    \"account_id\": \"1\",\n    \"account\": \"测试\",\n    \"opening_balance\": \"0.00\",\n    \"ending_balance\": \"0.00\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改现金银行",
+							"request": {
+								"url": "{{baseurl}}/bank/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"1\",\n    \"name\": \"中国银行\",\n    \"account_id\": \"1\",\n    \"account\": \"测试\",\n    \"opening_balance\": \"0.00\",\n    \"ending_balance\": \"0.00\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除现金银行",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/bank/remove?id=3",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"bank",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "3",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "支付类型",
+					"description": "",
+					"item": [
+						{
+							"name": "获取支付类型",
+							"request": {
+								"url": "{{baseurl}}/pay_type/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取支付类型详情",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/pay_type/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"pay_type",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加支付类型",
+							"request": {
+								"url": "{{baseurl}}/pay_type/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"测试\",\n    \"note\": \"测试\",\n    \"bank_id\": \"1\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改支付类型",
+							"request": {
+								"url": "{{baseurl}}/pay_type/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"1\",\n    \"name\": \"现金\",\n    \"note\": \"修改\",\n    \"bank_id\": \"1\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除支付类型",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/pay_type/remove?id=10",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"pay_type",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "10",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "固定资产",
+					"description": "",
+					"item": [
+						{
+							"name": "{{baseurl}}/asset/remove?id=3",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/asset/remove?id=3",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"asset",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "3",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "固定资产类型",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "固定资产增减方式",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有固定资产增减方式",
+							"request": {
+								"url": "{{baseurl}}/asset_io_type/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取固定资产增减方式详情",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/asset_io_type/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"asset_io_type",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改固定资产增减方式",
+							"request": {
+								"url": "{{baseurl}}/asset_io_type/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"1\",\n    \"name\": \"报废\",\n    \"type\": \"2\",\n    \"note\": \"修改\",\n    \"account_id\": \"1\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加固定资产增减方式",
+							"request": {
+								"url": "{{baseurl}}/asset_io_type/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"测试\",\n    \"type\": \"2\",\n    \"note\": \"测试\",\n    \"account_id\": \"1\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除固定资产增减方式",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/asset_io_type/remove?id=3",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"asset_io_type",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "3",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "系统",
+			"description": "",
+			"item": [
+				{
+					"name": "用户",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有用户",
+							"request": {
+								"url": "{{baseurl}}/user/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个用户",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/user/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"user",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除用户",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/user/remove?id=4",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"user",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "角色",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有角色",
+							"request": {
+								"url": "{{baseurl}}/role/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取用户的所有角色",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/role/user?user_id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"role",
+										"user"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个角色",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/role/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"role",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加角色",
+							"request": {
+								"url": "{{baseurl}}/role/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"测试名称\",\n    \"note\": \"\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改角色",
+							"request": {
+								"url": "{{baseurl}}/role/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"1\",\n    \"name\": \"仓库管理员2\",\n    \"note\": \"\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除角色",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/role/remove?id=6",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"role",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "6",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "权限",
+					"description": "",
+					"item": [
+						{
+							"name": "获取所有权限",
+							"request": {
+								"url": "{{baseurl}}/permission/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取某个角色的所有权限",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/permission/role?role_id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"permission",
+										"role"
+									],
+									"query": [
+										{
+											"key": "role_id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取某个用户的所有权限",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/permission/user?user_id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"permission",
+										"user"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个权限",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/permission/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"permission",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "添加权限",
+							"request": {
+								"url": "{{baseurl}}/permission/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"测试名称\",\n    \"code\": \"001001\",\n    \"note\": \"\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "修改权限",
+							"request": {
+								"url": "{{baseurl}}/permission/update",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"1\",\n    \"name\": \"查看员工2\",\n    \"code\": \"001001\",\n    \"note\": \"\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除权限",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/permission/remove?id=5",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"permission",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录",
+					"description": "",
+					"item": [
+						{
+							"name": "获取登录用户（调试）",
+							"request": {
+								"url": "{{baseurl}}/login/user",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "是否登录（调试）",
+							"request": {
+								"url": "{{baseurl}}/login/is_login",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "登录",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/login/login?account=1&password=123456",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"login",
+										"login"
+									],
+									"query": [
+										{
+											"key": "account",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "退出登录",
+							"request": {
+								"url": "{{baseurl}}/login/logout",
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "用户-角色",
+					"description": "",
+					"item": [
+						{
+							"name": "用户添加角色 // TODO",
+							"request": {
+								"url": "{{baseurl}}/user_role/add",
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "用户删除角色 // TODO",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/user_role/remove?id=6",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"user_role",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "6",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "角色-权限",
+					"description": "",
+					"item": [
+						{
+							"name": "角色添加权限（未完成）",
+							"request": {
+								"url": "{{baseurl}}/role_permission/add",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "角色删除权限 // TODO",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/role_permission/remove?id=5",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"role_permission",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "销售",
+			"description": "",
+			"item": [
+				{
+					"name": "销售订单",
+					"description": "",
+					"item": [
+						{
+							"name": "获取销售订单",
+							"request": {
+								"url": "{{baseurl}}/sale_order/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个销售订单",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/sale_order/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"sale_order",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "销售开单",
+					"description": "",
+					"item": [
+						{
+							"name": "获取销售开单",
+							"request": {
+								"url": "{{baseurl}}/sale_bill/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个销售开单",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/sale_bill/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"sale_bill",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "销售收款",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "采购",
+			"description": "",
+			"item": [
+				{
+					"name": "采购订单",
+					"description": "",
+					"item": [
+						{
+							"name": "获取采购订单",
+							"request": {
+								"url": "{{baseurl}}/purchase_order/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个采购订单",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/purchase_order/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"purchase_order",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "采购开单",
+					"description": "",
+					"item": [
+						{
+							"name": "获取采购开单",
+							"request": {
+								"url": "{{baseurl}}/purchase_bill/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个采购开单",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/purchase_bill/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"purchase_bill",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "请购单",
+					"description": "",
+					"item": [
+						{
+							"name": "获取请购单",
+							"request": {
+								"url": "{{baseurl}}/purchase_apply/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个请购单",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/purchase_apply/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"purchase_apply",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "采购付款",
+					"description": "",
+					"item": [
+						{
+							"name": "获取采购付款单",
+							"request": {
+								"url": "{{baseurl}}/purchase_pay/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取单个采购付款单",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/purchase_pay/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"purchase_pay",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "其他",
+			"description": "",
+			"item": [
+				{
+					"name": "单据",
+					"description": "",
+					"item": [
+						{
+							"name": "获取单据类型",
+							"request": {
+								"url": "{{baseurl}}/bill_type/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取所有单据",
+							"request": {
+								"url": "{{baseurl}}/bill/all",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "消息",
+					"description": "",
+					"item": [
+						{
+							"name": "获取用户的所有消息",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/message/all?user_id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"message",
+										"all"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "获取消息详情",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/message/detail?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"message",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "删除消息",
+							"request": {
+								"url": {
+									"raw": "{{baseurl}}/message/remove?id=4",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"message",
+										"remove"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "回收站",
+			"description": "",
+			"item": [
+				{
+					"name": "测试",
+					"request": {
+						"url": "{{baseurl}}/asset_io_type/remo",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
