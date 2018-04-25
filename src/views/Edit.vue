@@ -1,17 +1,15 @@
 <template>
-    <my-page title="接口文档" :page="page">
+    <my-page title="编辑">
         <div class="left-box">
-            <div class="nav-box">
-                <div class="search-box">
-                    <input class="input" v-model="keyword" placeholder="搜索">
-                    <ui-icon-button icon="close" @click="keyword = ''" v-if="keyword" />
-                </div>
-                <div class="my-tree-box">
-                    <v-tree ref='tree'
-                            :data='treeData'
-                            @node-click="click"
-                            :halfcheck='true'/>
-                </div>
+            <div class="search-box">
+                <input class="input" v-model="keyword" placeholder="搜索">
+                <ui-icon-button icon="close" @click="keyword = ''" v-if="keyword" />
+            </div>
+            <div class="my-tree-box">
+                <v-tree ref='tree'
+                        :data='treeData'
+                        @node-click="click"
+                        :halfcheck='true'/>
             </div>
         </div>
         <div class="right-box">
@@ -46,17 +44,18 @@
                             </tr>
                         </table>
                     </div>
-                    <!--<div>-->
-                        <!--<h2 class="sub-title">HEADERS</h2>-->
-                        <!--<table>-->
-                            <!--<tr v-for="header in request.request.header">-->
-                                <!--<th>{{ header.key }}</th>-->
-                                <!--<td>{{ header.value }}</td>-->
-                                <!--<td>{{ header.description }}</td>-->
-                            <!--</tr>-->
-                        <!--</table>-->
-                    <!--</div>-->
+                    <div>
+                        <h2 class="sub-title">HEADERS</h2>
+                        <table>
+                            <tr v-for="header in request.request.header">
+                                <th>{{ header.key }}</th>
+                                <td>{{ header.value }}</td>
+                                <td>{{ header.description }}</td>
+                            </tr>
+                        </table>
+                    </div>
                 </li>
+
             </ul>
         </div>
         <ui-drawer class="tool-box" right :open="toolVisible" @close="toggle()">
@@ -64,104 +63,15 @@
                 <ui-icon-button icon="close" @click="toggle" slot="left" />
             </ui-appbar>
             <div class="body" v-if="curRequest">
-                <div class="url">{{ getUrl(curRequest) }}</div>
                 <ui-raised-button primary label="HTTP 请求" @click="doRequest" />
-
-                <div v-if="!response">
-                    <div>点击“请求”按钮进行请求</div>
-                </div>
-                <div class="" v-if="response">
-                    <div>Status: {{ response.status }} {{ response.statusText }}</div>
-                    <h2 class="sub-title">响应 / Responses</h2>
-                    <ui-tabs class="my-tab" :value="activeTab" @change="handleTabChange">
-                        <ui-tab value="tab1" title="Body"/>
-                        <ui-tab value="tab2" title="Headers"/>
-                        <ui-tab value="tab3" title="Test"/>
-                    </ui-tabs>
-                    <div v-if="activeTab === 'tab1'">
-                        <pre>
-                            {{ response.data }}
-                        </pre>
-                    </div>
-                    <div v-if="activeTab === 'tab2'">
-                        {{ response.headers.list }}
-                        <table>
-                            <tr>
-                                <th>Key</th>
-                                <th>Value</th>
-                            </tr>
-                            <tr v-for="header in response.headers">
-                                <th :title="getResponseHeaderDesc(header.key)">{{ header.key }}</th>
-                                <td>{{ header.value }}</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div v-if="activeTab === 'tab3'">
-                        <div>测试用例</div>
-                    </div>
-                </div>
-            </div>
-        </ui-drawer>
-        <ui-drawer class="tool-box" right :open="toolVisible" @close="toggle()">
-            <ui-appbar title="工具">
-                <ui-icon-button icon="close" @click="toggle" slot="left" />
-            </ui-appbar>
-            <div class="body" v-if="curRequest">
-                <div class="url">{{ getUrl(curRequest) }}</div>
-                <ui-raised-button primary label="HTTP 请求" @click="doRequest" />
-
-                <div v-if="!response">
-                    <div>点击“请求”按钮进行请求</div>
-                </div>
-                <div class="" v-if="response">
-                    <div>Status: {{ response.status }} {{ response.statusText }}</div>
-                    <h2 class="sub-title">响应 / Responses</h2>
-                    <ui-tabs class="my-tab" :value="activeTab" @change="handleTabChange">
-                        <ui-tab value="tab1" title="Body"/>
-                        <ui-tab value="tab2" title="Headers"/>
-                        <ui-tab value="tab3" title="Test"/>
-                    </ui-tabs>
-                    <div v-if="activeTab === 'tab1'">
-                        <pre>
-                            {{ response.data }}
-                        </pre>
-                    </div>
-                    <div v-if="activeTab === 'tab2'">
-                        {{ response.headers.list }}
-                        <table>
-                            <tr>
-                                <th>Key</th>
-                                <th>Value</th>
-                            </tr>
-                            <tr v-for="header in response.headers">
-                                <th :title="getResponseHeaderDesc(header.key)">{{ header.key }}</th>
-                                <td>{{ header.value }}</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div v-if="activeTab === 'tab3'">
-                        <div>测试用例</div>
-                    </div>
-                </div>
-            </div>
-        </ui-drawer>
-        <ui-drawer class="tool-box" right :open="navVisible" :docked="false" @close="toggleNav()">
-            <ui-appbar title="导航">
-                <ui-icon-button icon="close" @click="toggleNav" slot="left" />
-            </ui-appbar>
-            <div class="body">
-                <div class="nav-box">
-                    <div class="search-box">
-                        <input class="input" v-model="keyword" placeholder="搜索">
-                        <ui-icon-button icon="close" @click="keyword = ''" v-if="keyword" />
-                    </div>
-                    <div class="my-tree-box">
-                        <v-tree ref='tree'
-                                :data='treeData'
-                                @node-click="click"
-                                :halfcheck='true'/>
-                    </div>
-                </div>
+                <h2 class="sub-title">响应 / Responses</h2>
+                <table>
+                    <!--<tr v-for="header in request.request.header">-->
+                        <!--<th>{{ header.key }}</th>-->
+                        <!--<td>{{ header.value }}</td>-->
+                        <!--<td>{{ header.description }}</td>-->
+                    <!--</tr>-->
+                </table>
             </div>
         </ui-drawer>
     </my-page>
@@ -182,31 +92,19 @@
                 ],
                 page: {
                     menu: [
+                        {
+                            type: 'icon',
+                            icon: 'help',
+                            to: '/help'
+                        }
                     ]
                 },
-                menu: [
-//                        {
-//                            type: 'icon',
-//                            icon: 'help',
-//                            to: '/help'
-//                        },
-                    {
-                        type: 'icon',
-                        icon: 'settings',
-                        click: this.toggleSetting,
-                        title: '设置'
-                    }
-                ],
                 data: null,
                 info: null,
                 requests: [],
                 curRequest: null,
                 keyword: '',
-                toolVisible: false,
-                navVisible: false,
-                activeTab: 'tab1',
-                response: null,
-                settingVisible: false
+                toolVisible: false
             }
         },
         computed: {
@@ -232,20 +130,10 @@
             window.removeEventListener('resize', this.onResize)
         },
         methods: {
-            toggleNav() {
-                this.navVisible = !this.navVisible
-            },
-            toggleSetting() {
-                this.settingVisible = !this.settingVisible
-            },
-            handleTabChange(val) {
-                this.activeTab = val
-            },
             getUrl(request) {
                 return this.getTemplateStr(request.request.url.raw || request.request.url)
             },
             showTool(request) {
-                this.response = null
                 this.toolVisible = true
                 this.curRequest = request
             },
@@ -256,17 +144,15 @@
                 return marked(markdown)
             },
             getTemplateStr(request) {
-                let baseUrl = 'http://192.168.3.60:9998/index.php/home'
-//                let baseUrl = 'http://localhost:9998/index.php/home'
+//                let baseUrl = 'http://192.168.3.60:9998/index.php/home'
+                let baseUrl = 'http://localhost:9998/index.php/home'
                 return request.replace('{{baseurl}}', baseUrl)
             },
             click(node) {
 //                console.log(node)
                 if (node.info) {
                     location.href = '#info'
-                    this.navVisible = false
                 } else if (node.isLeave) {
-                    this.navVisible = false
                     location.href = '#' + node.toId
                 } else {
                     node.expanded = !node.expanded
@@ -304,21 +190,20 @@
                 window.addEventListener('resize', this.onResize = () => {
                     this.resize()
                 }, false)
-                this.resize()
             },
             resize() {
-                if (window.innerWidth < 800) {
-                    this.page.menu = this.menu.concat([
-                        {
-                            type: 'icon',
-                            icon: 'list',
-                            click: this.toggleNav,
-                            title: '目录'
-                        }
-                    ])
-                } else {
-                    this.page.menu = this.menu
-                }
+//                if (window.innerWidth < 800) {
+//                    this.page.menu = [
+//                        {
+//                            type: 'icon',
+//                            icon: 'list',
+//                            click: this.toggle,
+//                            title: '目录'
+//                        }
+//                    ]
+//                } else {
+//                    this.page.menu = []
+//                }
             },
             dealData(data) {
                 this.requests = []
@@ -383,34 +268,10 @@
                 }).then(
                     response => {
                         console.log(response)
-                        this.response = this.parseResponse(response)
                     },
-                    (response, b, c) => {
-                        console.log(response, b, c)
-                        this.response = this.parseResponse(response)
+                    response => {
+                        console.log(response)
                     })
-                    .catch(function (error, b) {
-                        console.log(error, b)
-                    })
-            },
-            parseResponse(response) {
-                let headers = []
-                for (let key in response.headers) {
-                    headers.push({
-                        key: key,
-                        value: response.headers[key]
-                    })
-                }
-                response.headers = headers
-                return response
-            },
-            getResponseHeaderDesc(name) {
-                switch (name) {
-                    case 'expires':
-                        return '过期时间'
-                    default:
-                        return ''
-                }
             }
         }
     }

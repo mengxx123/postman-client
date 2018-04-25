@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 const Home = resolve => require(['@/views/Home'], resolve)
 const Swagger = resolve => require(['@/views/Swagger'], resolve)
+const View = resolve => require(['@/views/View'], resolve)
+const Edit = resolve => require(['@/views/Edit'], resolve)
 const About = resolve => require(['@/views/About'], resolve)
 const Error404 = resolve => require(['@/views/error/Error404'], resolve)
 
@@ -16,6 +18,14 @@ let routes = [
     {
         path: '/swagger',
         component: Swagger
+    },
+    {
+        path: '/view',
+        component: View
+    },
+    {
+        path: '/edit',
+        component: Edit
     },
     {
         path: '/about',

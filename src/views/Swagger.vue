@@ -87,13 +87,13 @@
                 }
             },
             init() {
-                let url = 'http://localhost:9999/wsdgy/api/erp.postman_collection.json'
+                let url = 'http://localhost:8082/static/swagger.json'
                 url = url + '?time=' + new Date().getTime()
                 this.$http.get(url).then(
                     response => {
                         let data = response.data
                         this.data = data
-                        console.log(data.info)
+                        console.log(data)
                         this.info = data.info
                         this.dealData(data)
                     },
